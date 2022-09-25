@@ -11,10 +11,43 @@ let offsetTop = 0;
 let offsetBottom = 0;
 let isDisabledBack = false;
 let isDisabledForward = false;
-const arrayWidthTop = calculateWidthTop();
-const arrayWidthBottom = calculateWidthBottom();
 
+//I am using *2 because i wan't the second array to be my starting position
+const arrayWidthTop = calculateWidthTop()*2;
+const arrayWidthBottom = calculateWidthBottom()*2;
+
+//Setting up the starting position
 setInitialGalleryState();
+
+function setInitialGalleryState(){
+  /*
+  The leftmost image is the first one so the second one
+  has to be the one to its right so I just
+   reversed the order of the images
+  */
+
+  sliderGalleryTop.append(...Array.from(sliderGalleryTop.childNodes).reverse());
+  sliderGalleryBottom.append(...Array.from(sliderGalleryBottom.childNodes).reverse());
+
+  const galleryTop = document.querySelector('.slider__gallery--top').innerHTML;
+  const galleryBottom = document.querySelector('.slider__gallery--bottom').innerHTML;
+
+  // I am using three identical arrays to allow me to later reset
+  // the starting position without it being noticed
+  sliderGalleryTop.innerHTML = galleryTop + galleryTop + galleryTop;
+  sliderGalleryBottom.innerHTML = galleryBottom + galleryBottom + galleryBottom;
+
+  resetPositionTop();
+  resetPositionBottom();
+}
+
+function resetPositionTop(){
+  sliderGalleryTop.style.transform = `translateX(-${arrayWidthTop}px)`;
+}
+
+function resetPositionBottom(){
+  sliderGalleryBottom.style.transform = `translateX(-${arrayWidthBottom}px)`;
+}
 
 btnPrev.addEventListener('click', () => {
   sliderGalleryTop.style.transition = '400ms ease-in-out transform';
@@ -44,7 +77,7 @@ btnNext.addEventListener('click', () => {
 sliderGalleryTop.addEventListener('transitionend', () => {
   if(Math.abs(focusIdTop)>imagesTop.length || focusIdTop == 1){
     sliderGalleryTop.style.transition = 'none';
-    sliderGalleryTop.style.transform = `translateX(-${arrayWidthTop*2}px)`;
+    sliderGalleryTop.style.transform = `translateX(-${arrayWidthTop}px)`;
     focusIdTop = 1;
     offsetTop = 0;
   }
@@ -54,24 +87,13 @@ sliderGalleryTop.addEventListener('transitionend', () => {
 sliderGalleryBottom.addEventListener('transitionend', () => {
   if(Math.abs(focusIdBottom)>imagesBottom.length || focusIdBottom == 1){
     sliderGalleryBottom.style.transition = 'none';
-    sliderGalleryBottom.style.transform = `translateX(-${arrayWidthBottom*2}px)`;
+    sliderGalleryBottom.style.transform = `translateX(-${arrayWidthBottom}px)`;
     focusIdBottom = 1;
     offsetBottom = 0;
   }
 })
 
-function setInitialGalleryState(){
-  sliderGalleryTop.append(...Array.from(sliderGalleryTop.childNodes).reverse());
-  sliderGalleryBottom.append(...Array.from(sliderGalleryBottom.childNodes).reverse());
 
-  const galleryTop = document.querySelector('.slider__gallery--top').innerHTML;
-  const galleryBottom = document.querySelector('.slider__gallery--bottom').innerHTML;
-
-  sliderGalleryTop.innerHTML = galleryTop + galleryTop + galleryTop;
-  sliderGalleryBottom.innerHTML = galleryBottom + galleryBottom + galleryBottom;
-
-  resetPosition();
-}
 
 function calculateWidthTop(){
   let sum = 0;
@@ -86,39 +108,36 @@ function calculateWidthBottom(){
   return sum;
 }
 
-function resetPosition(){
-  sliderGalleryTop.style.transform = `translateX(-${arrayWidthTop*2}px)`;
-  sliderGalleryBottom.style.transform = `translateX(-${arrayWidthBottom*2}px)`;
-}
+
 
 function moveRowBack(){
   if(focusIdTop == imagesTop.length){
     focusIdTop = 1;
-    sliderGalleryTop.style.transform = `translateX(-${arrayWidthTop*2}px)`;
+    sliderGalleryTop.style.transform = `translateX(-${arrayWidthTop}px)`;
   } else {
     if(focusIdTop > 1){
       offsetTop += imagesTop[focusIdTop-1].width/2 +10;
-      sliderGalleryTop.style.transform = `translateX(-${arrayWidthTop*2-offsetTop}px)`;
+      sliderGalleryTop.style.transform = `translateX(-${arrayWidthTop-offsetTop}px)`;
       focusIdTop++;
 
     } else {
       offsetTop += imagesTop[Math.abs(focusIdTop)-1].width/2 +10;
-      sliderGalleryTop.style.transform = `translateX(-${arrayWidthTop*2-offsetTop}px)`;
+      sliderGalleryTop.style.transform = `translateX(-${arrayWidthTop-offsetTop}px)`;
       focusIdTop == 1 ? focusIdTop = -2 : focusIdTop--;
     }
   }
 
   if(focusIdBottom == imagesBottom.length){
     focusIdBottom = 1;
-    sliderGalleryBottom.style.transform = `translateX(-${arrayWidthBottom*2}px)`;
+    sliderGalleryBottom.style.transform = `translateX(-${arrayWidthBottom}px)`;
   }else {
     if(focusIdBottom > 1){
       offsetBottom += imagesBottom[focusIdBottom-1].width/2 +10;
-      sliderGalleryBottom.style.transform = `translateX(-${arrayWidthBottom*2-offsetBottom}px)`;
+      sliderGalleryBottom.style.transform = `translateX(-${arrayWidthBottom-offsetBottom}px)`;
       focusIdBottom++;
     } else {
       offsetBottom += imagesBottom[Math.abs(focusIdBottom)-1].width/2 +10;
-      sliderGalleryBottom.style.transform = `translateX(-${arrayWidthBottom*2-offsetBottom}px)`;
+      sliderGalleryBottom.style.transform = `translateX(-${arrayWidthBottom-offsetBottom}px)`;
       focusIdBottom == 1 ? focusIdBottom = -2 : focusIdBottom--;
     }
   }
@@ -137,23 +156,23 @@ function moveRowForward() {
   if(focusIdTop > 0){
     focusIdTop--;
     offsetTop -= imagesTop[Math.abs(focusIdTop)-1].width/2 +10;
-    sliderGalleryTop.style.transform = `translateX(-${arrayWidthTop*2-offsetTop}px)`;
+    sliderGalleryTop.style.transform = `translateX(-${arrayWidthTop-offsetTop}px)`;
   } else {
     focusIdTop++;
     offsetTop -= imagesTop[Math.abs(focusIdTop)-1].width/2 +10;
-    sliderGalleryTop.style.transform = `translateX(-${arrayWidthTop*2-offsetTop}px)`;
+    sliderGalleryTop.style.transform = `translateX(-${arrayWidthTop-offsetTop}px)`;
 
   }
 
   if(focusIdBottom > 0){
     focusIdBottom--;
     offsetBottom -= imagesBottom[Math.abs(focusIdBottom)-1].width/2 +10;
-    sliderGalleryBottom.style.transform = `translateX(-${arrayWidthBottom*2-offsetBottom}px)`;
+    sliderGalleryBottom.style.transform = `translateX(-${arrayWidthBottom-offsetBottom}px)`;
 
   } else {
     focusIdBottom++;
     offsetBottom -= imagesBottom[Math.abs(focusIdBottom)-1].width/2 +10;
-    sliderGalleryBottom.style.transform = `translateX(-${arrayWidthBottom*2-offsetBottom}px)`;
+    sliderGalleryBottom.style.transform = `translateX(-${arrayWidthBottom-offsetBottom}px)`;
   }
 
   setTimeout(function(){
