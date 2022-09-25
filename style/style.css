@@ -1,7 +1,13 @@
+:root{
+  --color-primary: #134880;
+  --color-secondary: #484A4C;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
 .slider {
@@ -27,4 +33,21 @@
   padding-left: 10px;
   height: 200px;
   border-radius: 5px;
+}
+
+.slider__description {
+  padding-left: 20px;
+}
+
+.slider__description--title {
+  color: var(--color-primary);
+  font-size: 32px;
+  line-height: 38px;
+  font-weight: bold;
+}
+
+.slider__description--text {
+  color: var(--color-secondary);
+  font-size: 18px;
+  line-height: 26px;
 }
