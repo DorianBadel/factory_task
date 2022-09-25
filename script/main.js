@@ -5,16 +5,13 @@ const btnNext = document.querySelector('.nextBTN');
 let focusId = 1;
 const arrayWidth = calculateImageSize();
 let offset = 0;
-
 setInitialGalleryState();
 function setInitialGalleryState(){
+
+  sliderGalleryTop.append(...Array.from(sliderGalleryTop.childNodes).reverse());
   const gallery = document.querySelector('.slider__gallery--top').innerHTML;
   sliderGalleryTop.innerHTML = gallery + gallery;
-  sliderGalleryTop.innerHTML += `<img src="assets/images/slider-image-5.jpg" alt="surfer on a beach">`;
-
-
-  console.log(arrayWidth);
-  sliderGalleryTop.style.transform = `translateX(-${arrayWidth*2}px)`;
+  resetPosition();
 }
 
 function calculateImageSize(){
@@ -23,11 +20,13 @@ function calculateImageSize(){
   return sum;
 }
 
+function resetPosition(){
+  sliderGalleryTop.style.transform = `translateX(-${arrayWidth*2}px)`;
+}
+
 btnNext.addEventListener('click', () => {
   sliderGalleryTop.style.transition = '200ms ease-in-out transform';
-  console.log(imagesTop[Math.abs(focusId)-1].width);
   offset += imagesTop[Math.abs(focusId)-1].width/2 +10;
-  console.log(offset);
   sliderGalleryTop.style.transform = `translateX(-${arrayWidth*2-offset}px)`;
 
 
@@ -36,4 +35,14 @@ btnNext.addEventListener('click', () => {
   }else{
     focusId--;
   }
+})
+
+sliderGalleryTop.addEventListener('transitionend', () => {
+  if(Math.abs(focusId)>imagesTop.length){
+    sliderGalleryTop.style.transition = 'none';
+    sliderGalleryTop.style.transform = `translateX(-${arrayWidth*2}px)`;
+    focusId = 1;
+    offset = 0;
+  }
+
 })
