@@ -21,9 +21,9 @@ setInitialGalleryState();
 
 function setInitialGalleryState(){
   /*
-  The leftmost image is the first one so the second one
-  has to be the one to its right so I just
-   reversed the order of the images
+    The rightmost image is the first one so the second one
+    has to be the one to its left so the order of images is
+    reversed
   */
 
   sliderGalleryTop.append(...Array.from(sliderGalleryTop.childNodes).reverse());
@@ -49,35 +49,61 @@ function resetPositionBottom(){
   sliderGalleryBottom.style.transform = `translateX(-${arrayWidthBottom}px)`;
 }
 
-btnPrev.addEventListener('click', () => {
-  sliderGalleryTop.style.transition = '400ms ease-in-out transform';
-  sliderGalleryBottom.style.transition = '600ms ease-in-out transform';
+// --- Listeners ---
 
+btnPrev.addEventListener('click', () => {
+  // Setting the desired animation
+  sliderGalleryTop.style.transition = '400ms ease-in-out transform';
+  sliderGalleryBottom.style.transition = '400ms ease-in-out transform';
+
+  // Here i disable the button for a few seconds to avoid spam
+  // and to let the animation play out
   if(!isDisabledBack){
     btnPrev.classList.add('disabled');
     btnPrev.src = "./assets/images/arrow-gray-left.png";
     isDisabledBack = true;
+
     moveRowBack();
+
+    setTimeout(function(){
+      isDisabledBack = false;
+      btnPrev.classList.remove('disabled');
+      btnPrev.src = "./assets/images/arrow-blue-left.png";
+    },400);
   }
 })
 
+
+// Same as above
 btnNext.addEventListener('click', () => {
-  sliderGalleryTop.style.transition = '600ms ease-in-out transform';
+  sliderGalleryTop.style.transition = '400ms ease-in-out transform';
   sliderGalleryBottom.style.transition = '400ms ease-in-out transform';
 
   if(!isDisabledForward){
     btnNext.classList.add('disabled');
     btnNext.src = "./assets/images/arrow-gray-Right.png";
     isDisabledForward = true;
+
     moveRowForward();
+
+    setTimeout(function(){
+      isDisabledForward = false;
+      btnNext.classList.remove('disabled');
+      btnNext.src = "./assets/images/arrow-blue-right.png";
+    },400);
   }
 })
 
-
+/*
+  These "transitioned" listeners are used to check if
+  the offset should be reset.
+  This is only triggered when the observed image (rightmost one)
+  is the last image of either the first or last array
+*/
 sliderGalleryTop.addEventListener('transitionend', () => {
   if(Math.abs(focusIdTop)>imagesTop.length || focusIdTop == 1){
     sliderGalleryTop.style.transition = 'none';
-    sliderGalleryTop.style.transform = `translateX(-${arrayWidthTop}px)`;
+    resetPositionTop();
     focusIdTop = 1;
     offsetTop = 0;
   }
@@ -87,13 +113,11 @@ sliderGalleryTop.addEventListener('transitionend', () => {
 sliderGalleryBottom.addEventListener('transitionend', () => {
   if(Math.abs(focusIdBottom)>imagesBottom.length || focusIdBottom == 1){
     sliderGalleryBottom.style.transition = 'none';
-    sliderGalleryBottom.style.transform = `translateX(-${arrayWidthBottom}px)`;
+    resetPositionBottom();
     focusIdBottom = 1;
     offsetBottom = 0;
   }
 })
-
-
 
 function calculateWidthTop(){
   let sum = 0;
@@ -108,13 +132,18 @@ function calculateWidthBottom(){
   return sum;
 }
 
-
-
 function moveRowBack(){
+  // First we check if we are observing the first image in the second array
+  // because the image to its left is our initial image
   if(focusIdTop == imagesTop.length){
     focusIdTop = 1;
-    sliderGalleryTop.style.transform = `translateX(-${arrayWidthTop}px)`;
+    resetPositionTop();
   } else {
+    // The indexes are set as such:
+    // ... -4, -3, -2, 1, n, n-1, n-2, ...
+    // where 1 is our starting image
+    // that's why the focused index is increase if it's bigger than 1
+    // and decreased if it is smaller than 1
     if(focusIdTop > 1){
       offsetTop += imagesTop[focusIdTop-1].width/2 +10;
       sliderGalleryTop.style.transform = `translateX(-${arrayWidthTop-offsetTop}px)`;
@@ -127,9 +156,10 @@ function moveRowBack(){
     }
   }
 
+  // Same as above
   if(focusIdBottom == imagesBottom.length){
     focusIdBottom = 1;
-    sliderGalleryBottom.style.transform = `translateX(-${arrayWidthBottom}px)`;
+    resetPositionBottom();
   }else {
     if(focusIdBottom > 1){
       offsetBottom += imagesBottom[focusIdBottom-1].width/2 +10;
@@ -142,14 +172,14 @@ function moveRowBack(){
     }
   }
 
-  setTimeout(function(){
-    isDisabledBack = false;
-    btnPrev.classList.remove('disabled');
-    btnPrev.src = "./assets/images/arrow-blue-left.png";
-  },600);
+
 }
 
+
 function moveRowForward() {
+
+  // This is here because the first index to the right of
+  // the initial one is n - or in onther words the size of the array
   if(Math.abs(focusIdTop) == 1) focusIdTop = imagesTop.length+1;
   if(Math.abs(focusIdBottom) == 1) focusIdBottom = imagesBottom.length+1;
 
@@ -161,7 +191,6 @@ function moveRowForward() {
     focusIdTop++;
     offsetTop -= imagesTop[Math.abs(focusIdTop)-1].width/2 +10;
     sliderGalleryTop.style.transform = `translateX(-${arrayWidthTop-offsetTop}px)`;
-
   }
 
   if(focusIdBottom > 0){
@@ -174,11 +203,4 @@ function moveRowForward() {
     offsetBottom -= imagesBottom[Math.abs(focusIdBottom)-1].width/2 +10;
     sliderGalleryBottom.style.transform = `translateX(-${arrayWidthBottom-offsetBottom}px)`;
   }
-
-  setTimeout(function(){
-    isDisabledForward = false;
-    btnNext.classList.remove('disabled');
-    btnNext.src = "./assets/images/arrow-blue-right.png";
-  },600);
-
 }
