@@ -2,7 +2,7 @@ const sliderGalleryTop = document.querySelector('.slider__gallery--top');
 const sliderGalleryBottom = document.querySelector('.slider__gallery--bottom');
 const imagesTop = document.querySelectorAll('.slider__gallery--top img');
 const imagesBottom = document.querySelectorAll('.slider__gallery--bottom img');
-const btnNext = document.querySelector('.nextBTN');
+const btnNext = document.querySelector('.button-next');
 
 let focusIdTop = 1;
 let focusIdBottom = 1;
