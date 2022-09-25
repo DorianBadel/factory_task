@@ -32,7 +32,7 @@
 
 .slider__gallery--top img, .slider__gallery--bottom img {
   object-fit: cover;
-  padding-left: 10px;
+  margin-left: 10px;
   height: 200px;
   border-radius: 5px;
 }
