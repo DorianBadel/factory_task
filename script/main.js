@@ -128,7 +128,6 @@ function calculateWidthTop(){
 function calculateWidthBottom(){
   let sum = 0;
   imagesBottom.forEach(img => sum += (img.width)+10);
-  console.log(sum);
   return sum;
 }
 
