@@ -1,6 +1,7 @@
 :root{
   --color-primary: #134880;
   --color-secondary: #484A4C;
+  --color-disabled: #DDDDDD;
 }
 
 * {
@@ -32,7 +33,7 @@
 
 .slider__gallery--top img, .slider__gallery--bottom img {
   object-fit: cover;
-  padding-left: 10px;
+  margin-left: 10px;
   height: 200px;
   border-radius: 5px;
 }
@@ -54,7 +55,7 @@
   line-height: 26px;
 }
 
-.controlls{
+.slider__controlls{
   padding-top: 10px;
   display: grid;
   grid-template-rows: 1fr 1fr;
@@ -68,7 +69,7 @@
 }
 
 .disabled {
-  border: 1px solid #DDDDDD;
+  border: 1px solid var(--color-disabled);
 }
 
 .button:hover:not(.disabled){
