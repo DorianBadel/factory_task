@@ -1,1 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+.slider {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  height: 50vh;
+  padding: 60px 0;
+}
+
+.slider__gallery {
+  overflow: hidden;
+  padding-left: 360px;
+  width: 100%;
+}
+
+.slider__gallery--top {
+  display: flex;
+  height: 100%;
+}
+
+.slider__gallery--top img{
+  object-fit: cover;
+  padding-left: 10px;
+  height: 200px;
+  border-radius: 5px;
+}
