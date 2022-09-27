@@ -59,16 +59,12 @@ btnPrev.addEventListener('click', () => {
   // Here i disable the button for a few seconds to avoid spam
   // and to let the animation play out
   if(!isDisabledBack){
-    btnPrev.classList.add('disabled');
-    btnPrev.src = "./assets/images/arrow-gray-left.png";
     isDisabledBack = true;
 
     moveRowBack();
 
     setTimeout(function(){
       isDisabledBack = false;
-      btnPrev.classList.remove('disabled');
-      btnPrev.src = "./assets/images/arrow-blue-left.png";
     },400);
   }
 })
@@ -80,18 +76,28 @@ btnNext.addEventListener('click', () => {
   sliderGalleryBottom.style.transition = '400ms ease-in-out transform';
 
   if(!isDisabledForward){
-    btnNext.classList.add('disabled');
-    btnNext.src = "./assets/images/arrow-gray-Right.png";
     isDisabledForward = true;
 
     moveRowForward();
 
     setTimeout(function(){
       isDisabledForward = false;
-      btnNext.classList.remove('disabled');
-      btnNext.src = "./assets/images/arrow-blue-right.png";
     },400);
   }
+})
+
+btnPrev.addEventListener('mouseover',() => {
+  btnPrev.firstChild.src = "./assets/images/arrow-blue-Left.png";
+})
+btnPrev.addEventListener('mouseleave',() => {
+  btnPrev.firstChild.src = "./assets/images/arrow-gray-Left.png";
+})
+
+btnNext.addEventListener('mouseover',() => {
+  btnNext.firstChild.src = "./assets/images/arrow-blue-Right.png";
+})
+btnNext.addEventListener('mouseleave',() => {
+  btnNext.firstChild.src = "./assets/images/arrow-gray-Right.png";
 })
 
 /*
