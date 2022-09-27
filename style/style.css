@@ -86,20 +86,20 @@ header {
   display: grid;
   grid-template-rows: 1fr 1fr;
   grid-gap: 10px;
+  width: 60px;
 }
 
 .button{
-    padding: 22px 24px;
-    border: 1px solid var(--color-primary);
-    border-radius: 5px;
-}
-
-.disabled {
+  display: block;
+  background: #ffffff;
+  padding: 22px 24px;
   border: 1px solid var(--color-disabled);
+  border-radius: 5px;
 }
 
-.button:hover:not(.disabled){
-  box-shadow: 0 3px 3px rgba(0,0,0,0.6);
+
+.button:hover{
+  border: 1px solid var(--color-primary)
 }
 
 footer .box {
