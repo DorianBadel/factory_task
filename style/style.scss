@@ -1,3 +1,4 @@
+@forward 'components';
 @use 'globals' as t;
 
 .main__container{
@@ -22,68 +23,6 @@ header {
   p {
     font-family: t.$font-secondary;
     margin-left: 80px;
-  }
-}
-
-.slider {
-  display: grid;
-  grid-template-columns: 3fr 2fr;
-  padding: 60px 0;
-
-  &__gallery{
-    overflow: hidden;
-    height: 420px;
-    padding-left: 100%;
-
-    &--top, &--bottom{
-      display: flex;
-      height: 50%;
-
-      img{
-        object-fit: cover;
-        margin-left: 10px;
-        height: 200px;
-        border-radius: 5px;
-      }
-    }
-  }
-
-  &__description{
-    padding-left: 20px;
-
-    &--title{
-      color: t.$color-primary;
-      font-size: 32px;
-      line-height: 37.5px;
-      font-weight: bold;
-    }
-
-    &--text{
-      padding-top: 20px;
-      color: t.$color-secondary;
-      font-size: 18px;
-      line-height: 26px;
-    }
-  }
-
-  &__controlls {
-    padding-top: 10px;
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-    grid-gap: 10px;
-    width: 60px;
-  }
-}
-
-.button {
-  display: block;
-  background: t.$color-white;
-  padding: 22px 24px;
-  border: 1px solid t.$color-disabled;
-  border-radius: 5px;
-
-  &:hover {
-    border: 1px solid t.$color-primary
   }
 }
 
