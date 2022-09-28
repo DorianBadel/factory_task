@@ -87,17 +87,17 @@ btnNext.addEventListener('click', () => {
 })
 
 btnPrev.addEventListener('mouseover',() => {
-  btnPrev.firstChild.src = "./assets/images/arrow-blue-Left.png";
+  btnPrev.firstChild.src = "./assets/images/arrow-blue-left.png";
 })
 btnPrev.addEventListener('mouseleave',() => {
-  btnPrev.firstChild.src = "./assets/images/arrow-gray-Left.png";
+  btnPrev.firstChild.src = "./assets/images/arrow-gray-left.png";
 })
 
 btnNext.addEventListener('mouseover',() => {
-  btnNext.firstChild.src = "./assets/images/arrow-blue-Right.png";
+  btnNext.firstChild.src = "./assets/images/arrow-blue-right.png";
 })
 btnNext.addEventListener('mouseleave',() => {
-  btnNext.firstChild.src = "./assets/images/arrow-gray-Right.png";
+  btnNext.firstChild.src = "./assets/images/arrow-gray-right.png";
 })
 
 /*
