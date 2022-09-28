@@ -1,14 +1,4 @@
-$color-primary: #134880;
-$color-secondary: #484A4C;
-$color-disabled: #DDDDDD;
-$color-white: #FFFFFF;
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Source Sans Pro', sans-serif;
-}
+@use 'globals' as t;
 
 .main__container{
   margin: auto;
@@ -23,15 +13,14 @@ header {
 
 .box {
   display: flex;
-  background-color: $color-primary;
+  background-color: t.$color-primary;
   height: 100px;
-  color: $color-white;
+  color: t.$color-white;
   border-radius: 0px 0px 5px 5px;
   align-items: center;
 
   p {
-    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue",
-    Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-family: t.$font-secondary;
     margin-left: 80px;
   }
 }
@@ -63,7 +52,7 @@ header {
     padding-left: 20px;
 
     &--title{
-      color: $color-primary;
+      color: t.$color-primary;
       font-size: 32px;
       line-height: 37.5px;
       font-weight: bold;
@@ -71,7 +60,7 @@ header {
 
     &--text{
       padding-top: 20px;
-      color: $color-secondary;
+      color: t.$color-secondary;
       font-size: 18px;
       line-height: 26px;
     }
@@ -88,16 +77,21 @@ header {
 
 .button {
   display: block;
-  background: $color-white;
+  background: t.$color-white;
   padding: 22px 24px;
-  border: 1px solid $color-disabled;
+  border: 1px solid t.$color-disabled;
   border-radius: 5px;
 
   &:hover {
-    border: 1px solid $color-primary
+    border: 1px solid t.$color-primary
   }
 }
 
 footer .box {
   border-radius: 5px 5px 0px 0px;
+}
+
+
+@include t.breakpoint(large) {
+  
 }
