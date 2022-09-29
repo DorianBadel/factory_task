@@ -1,35 +1,43 @@
-@forward 'components';
-@use 'globals' as t;
+@forward "components";
+@use "globals" as t;
 
-.main__container{
-  margin: auto;
-  max-width: 940px;
+body {
+	overflow: hidden;
+}
+.main__container {
+	margin: auto;
+	max-width: 940px;
 }
 
 header {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-gap: 19px;
+	display: grid;
+	grid-template-columns: 1fr 2fr;
+	grid-gap: 19px;
+}
+
+header,
+footer {
+	width: 940px;
+	margin: auto;
 }
 
 .box {
-  display: flex;
-  background-color: t.$color-primary;
-  height: 100px;
-  color: t.$color-white;
-  border-radius: 0px 0px 5px 5px;
-  align-items: center;
+	display: flex;
+	background-color: t.$color-primary;
+	height: 100px;
+	color: t.$color-white;
+	border-radius: 0px 0px 5px 5px;
+	align-items: center;
 
-  p {
-    font-family: t.$font-secondary;
-    margin-left: 80px;
-  }
+	p {
+		font-family: t.$font-secondary;
+		margin-left: 80px;
+	}
 }
 
 footer .box {
-  border-radius: 5px 5px 0px 0px;
+	border-radius: 5px 5px 0px 0px;
 }
-
 
 /* Example of a mixin would be:
 @include t.breakpoint(large) {

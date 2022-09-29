@@ -1,12 +1,12 @@
-@use '../globals/' as t;
+@use "../globals/" as t;
 .button {
-  display: block;
-  background: t.$color-white;
-  padding: 22px 24px;
-  border: 1px solid t.$color-disabled;
-  border-radius: 5px;
+	display: block;
+	width: 60px;
+	height: 60px;
+	border: 1px solid t.$color-disabled;
+	border-radius: 5px;
 
-  &:hover {
-    border: 1px solid t.$color-primary
-  }
+	&:hover {
+		border: 1px solid t.$color-primary;
+	}
 }
