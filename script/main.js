@@ -2,6 +2,7 @@ const sliderGalleryTop = document.querySelector(".slider__gallery--top");
 const sliderGalleryBottom = document.querySelector(".slider__gallery--bottom");
 const imagesTop = document.querySelectorAll(".slider__gallery--top img");
 const imagesBottom = document.querySelectorAll(".slider__gallery--bottom img");
+const buttons = document.querySelectorAll(".button");
 const btnNext = document.querySelector(".button-next");
 const btnPrev = document.querySelector(".button-previous");
 
@@ -58,7 +59,7 @@ function resetPositionBottom() {
 
 // --- Listeners ---
 
-btnPrev.addEventListener("click", () => {
+buttons[0].addEventListener("click", () => {
 	// Setting the desired animation
 	sliderGalleryTop.style.transition = "400ms ease-in-out transform";
 	sliderGalleryBottom.style.transition = "400ms ease-in-out transform";
@@ -77,7 +78,7 @@ btnPrev.addEventListener("click", () => {
 });
 
 // Same as above
-btnNext.addEventListener("click", () => {
+buttons[1].addEventListener("click", () => {
 	sliderGalleryTop.style.transition = "400ms ease-in-out transform";
 	sliderGalleryBottom.style.transition = "400ms ease-in-out transform";
 
@@ -92,18 +93,18 @@ btnNext.addEventListener("click", () => {
 	}
 });
 
-btnPrev.addEventListener("mouseover", () => {
-	btnPrev.firstChild.src = "./assets/images/arrow-blue-left.png";
+buttons[0].addEventListener("mouseover", () => {
+	btnPrev.src = "./assets/images/arrow-blue-left.png";
 });
-btnPrev.addEventListener("mouseleave", () => {
-	btnPrev.firstChild.src = "./assets/images/arrow-gray-left.png";
+buttons[0].addEventListener("mouseleave", () => {
+	btnPrev.src = "./assets/images/arrow-gray-left.png";
 });
 
-btnNext.addEventListener("mouseover", () => {
-	btnNext.firstChild.src = "./assets/images/arrow-blue-right.png";
+buttons[1].addEventListener("mouseover", () => {
+	btnNext.src = "./assets/images/arrow-blue-right.png";
 });
-btnNext.addEventListener("mouseleave", () => {
-	btnNext.firstChild.src = "./assets/images/arrow-gray-right.png";
+buttons[1].addEventListener("mouseleave", () => {
+	btnNext.src = "./assets/images/arrow-gray-right.png";
 });
 
 /*

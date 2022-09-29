@@ -1,6 +1,9 @@
 @forward "components";
 @use "globals" as t;
 
+body {
+	overflow: hidden;
+}
 .main__container {
 	margin: auto;
 	max-width: 940px;
