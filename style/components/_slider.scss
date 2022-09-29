@@ -1,17 +1,24 @@
 @use '../globals/' as t;
 .slider {
   display: grid;
-  grid-template-columns: 3fr 2fr;
+  grid-template-columns: 619px 300px;
+  grid-gap: 19px;
   padding: 60px 0;
 
   &__gallery{
-    overflow: hidden;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    
     height: 420px;
+    width: 359px;
     padding-left: 100%;
+
+    clip-path: inset(0% 0% 0% -100%);
+
+
 
     &--top, &--bottom{
       display: flex;
-      height: 50%;
 
       img{
         object-fit: cover;
@@ -19,6 +26,8 @@
         height: 200px;
         border-radius: 5px;
       }
+    }
+    &--bottom{
     }
   }
 

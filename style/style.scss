@@ -12,6 +12,12 @@ header {
   grid-gap: 19px;
 }
 
+header, footer {
+  width: 940px;
+  margin: auto;
+}
+
+
 .box {
   display: flex;
   background-color: t.$color-primary;
