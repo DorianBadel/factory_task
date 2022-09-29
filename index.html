@@ -1,45 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-  <link rel="stylesheet" href="style/style.css">
-  <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="dist/style.css" />
+		<link
+			href="https://fonts.googleapis.com/css?family=Source+Sans+Pro"
+			rel="stylesheet"
+			type="text/css"
+		/>
 
-  <title>Factory task</title>
-</head>
-<body>
-  <section class="slider">
-    <div class="slider__gallery">
-      <div class="slider__gallery--top">
-        <img src="assets/images/slider-image-5.jpg" alt="surfer on a beach">
-        <img src="assets/images/slider-image-8.jpg" alt="wave crashing">
-        <img src="assets/images/slider-image-9.jpg" alt="penguins diving">
-        <img src="assets/images/slider-image-6.jpg" alt="girl covered with a blanket">
-        <img src="assets/images/slider-image-7.jpg" alt="waves on the shore">
-        <img src="assets/images/slider-image-4.jpg" alt="mountain side">
-      </div>
-      <div class="slider__gallery--bottom">
-        <img src="assets/images/slider-image-3.jpg" alt="surfer on a beach">
-        <img src="assets/images/slider-image-2.jpg" alt="wave crashing">
-        <img src="assets/images/slider-image-1.jpg" alt="penguins diving">
-        <img src="assets/images/slider-image-4.jpg" alt="girl covered with a blanket">
-        <img src="assets/images/slider-image-9.jpg" alt="waves on the shore">
-      </div>
-    </div>
+		<title>Factory task</title>
+	</head>
+	<body>
+		<header>
+			<div class="box"></div>
+			<div class="box">
+				<p>Skup drugih elemenata na stranici</p>
+			</div>
+		</header>
+		<div class="main__container">
+			<section class="slider">
+				<div class="slider__gallery">
+					<div class="slider__gallery--top">
+						<img
+							src="assets/images/slider-image-5.jpg"
+							alt="surfer on a beach"
+						/>
+						<img src="assets/images/slider-image-8.jpg" alt="wave crashing" />
+						<img src="assets/images/slider-image-9.jpg" alt="penguins diving" />
+						<img
+							src="assets/images/slider-image-6.jpg"
+							alt="girl covered with a blanket"
+						/>
+						<img
+							src="assets/images/slider-image-7.jpg"
+							alt="waves on the shore"
+						/>
+						<img src="assets/images/slider-image-4.jpg" alt="mountain side" />
+					</div>
+					<div class="slider__gallery--temp">
+						<div class="slider__gallery--bottom">
+							<img
+								src="assets/images/slider-image-3.jpg"
+								alt="surfer on a beach"
+							/>
+							<img src="assets/images/slider-image-2.jpg" alt="wave crashing" />
+							<img
+								src="assets/images/slider-image-1.jpg"
+								alt="penguins diving"
+							/>
+							<img
+								src="assets/images/slider-image-4.jpg"
+								alt="girl covered with a blanket"
+							/>
+							<img
+								src="assets/images/slider-image-9.jpg"
+								alt="waves on the shore"
+							/>
+						</div>
+						<div class="slider__controlls">
+							<button class="button">
+								<img
+									class="button-previous"
+									src="assets/images/arrow-gray-left.png"
+									alt="arrow-next"
+								/>
+							</button>
+							<button class="button">
+								<img
+									class="button-next"
+									src="assets/images/arrow-gray-right.png"
+									alt="arrow-next"
+								/>
+							</button>
+						</div>
+					</div>
+				</div>
 
-    <div class="slider__description">
-      <p class="slider__description--title">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-      <p class="slider__description--text"> Sint quod perspiciatis repudiandae natus alias, est adipisci quis earum veniam! Necessitatibus nobis delectus vero error nihil sunt quos laudantium, consectetur velit.</p>
-      <div class="slider__controlls">
-        <img src="assets/images/arrow-blue-left.png" alt="arrow-next" class="button button-previous"/>
-        <img src="assets/images/arrow-blue-right.png" alt="arrow-next" class="button button-next"/>
-      </div>
-    </div>
-  </section>
+				<div class="slider__description">
+					<p class="slider__description--title">
+						Lorem ipsum dolor sit amet consectetuer adipiscing elit
+					</p>
+					<p class="slider__description--text">
+						Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper
+						suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis
+						autem vel eum iriure dolor in hendrerit in vulputate velit esse
+						molestie consequat.
+					</p>
+				</div>
+			</section>
+		</div>
+		<footer>
+			<div class="box">
+				<p>Skup drugih elemenata na stranici</p>
+			</div>
+		</footer>
 
-  <script src="script/main.js"></script>
-</body>
+		<script src="script/main.js" defer></script>
+	</body>
 </html>
